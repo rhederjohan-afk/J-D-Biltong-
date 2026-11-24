@@ -3,47 +3,130 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>J&D Biltong - Cape Town</title>
+<title>J&D Biltong - Order Form</title>
 <style>
-body{font-family:Arial,sans-serif;margin:0;background:#fdf8f0;color:#222}
-header{background:#1a1a1a;color:#fff;padding:30px 20px;text-align:center}
-header h1{margin:0;font-size:32px;letter-spacing:2px}
-header p{color:#f5c518;margin:8px 0 0}
-.hero{padding:25px 20px;text-align:center}
-.hero h2{font-size:26px;margin:0}
-.hero p{color:#555}
-.products{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 15px 20px}
-.card{background:#fff;border:1px solid #eee;border-radius:14px;padding:15px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.card h3{margin:10px 0 5px;font-size:17px}
-.card p{font-size:13px;color:#666;margin:0}
-.price{font-weight:bold;font-size:18px;margin:10px 0;color:#111}
-.btn{display:block;background:#25D366;color:#fff;text-decoration:none;padding:12px;border-radius:10px;font-weight:bold}
-.order{background:#111;color:#fff;padding:25px 20px;text-align:center}
-.order a{display:inline-block;background:#25D366;color:#fff;padding:14px 22px;border-radius:12px;text-decoration:none;font-weight:bold;margin-top:10px}
-footer{padding:15px;text-align:center;font-size:12px;color:#888}
+*{box-sizing:border-box;font-family:Arial,sans-serif}
+body{margin:0;background:#2b1a0e;padding:10px}
+.wrap{max-width:480px;margin:auto;background:#1a0f08;border:3px solid #ffa500;border-radius:22px;overflow:hidden}
+.header{text-align:center;padding:20px 14px 10px;color:#fff}
+.header h1{margin:0;font-size:42px;line-height:.9}
+.header h1 span{display:block;color:#ff9d00;font-style:italic;font-family:Georgia,serif;font-size:54px;text-shadow:0 3px 0 #7a3d00}
+.header p{font-family:Georgia,serif;font-style:italic;font-size:24px;margin:8px 0}
+.order-title{background:linear-gradient(#ffcf3f,#ff8c00);margin:12px;border-radius:12px;padding:14px;text-align:center;font-size:30px;font-weight:900;font-style:italic;border:2px solid #ffdf80}
+.card{background:#fffaf0;margin:14px;border-radius:18px;overflow:hidden;border:2px solid #ffa500}
+.card-head{background:linear-gradient(#ffcf3f,#ff8c00);display:grid;grid-template-columns:1.4fr .6fr 1.2fr .6fr;padding:12px 10px;font-weight:900}
+.row{display:grid;grid-template-columns:1.4fr .6fr 1.2fr .6fr;align-items:center;padding:12px 10px;border-top:1px solid #eee;gap:6px}
+.row b{font-size:16px}.row small{color:#666}
+.qty{display:flex;border:2px solid #666;border-radius:12px;overflow:hidden;background:#f5ead6}
+.qty button{width:36px;font-size:22px;font-weight:900;border:0;background:#eee8d8;cursor:pointer}
+.qty span{flex:1;text-align:center;padding:8px 0;font-weight:900;font-size:18px}
+.total{font-weight:900;text-align:right}
+.out{font-size:11px;background:#fff2b8;color:#b45309;border:1px solid #f5c542;padding:5px 8px;border-radius:20px;display:inline-block;font-weight:900;margin-top:6px}
+.disabled{opacity:.45;pointer-events:none}
+.total-bar{background:linear-gradient(#ffcf3f,#ff8c00);padding:16px 12px;display:flex;justify-content:space-between;font-size:22px;font-weight:900}
+.details{background:#fffaf0;margin:14px;padding:16px;border-radius:18px}
+.pill{background:#000;color:#fff;display:inline-block;padding:9px 16px;border-radius:20px;font-weight:900}
+.green{background:#15803d;color:#fff;display:inline-block;padding:8px 14px;border-radius:20px;font-weight:900;margin:10px 0}
+label{font-weight:900;display:block;margin:14px 0 6px}
+input{width:100%;padding:14px;border-radius:12px;border:1.5px solid #aaa;font-size:16px}
+.note{background:#fef3c7;border:1.5px solid #f5a623;padding:12px;border-radius:12px;color:#7c2d12;font-weight:700;margin-top:14px}
+.cta{background:linear-gradient(#ffcf3f,#ff8c00);margin:14px;padding:16px;border-radius:14px;text-align:center;font-family:Georgia,serif;font-style:italic;font-size:32px}
+.wa{background:#22c55e;color:#0a2a12;border:0;width:calc(100% - 28px);margin:0 14px 10px;padding:18px;border-radius:16px;font-size:20px;font-weight:900;cursor:pointer}
+.emailBtn{background:#2563eb;color:#fff;border:0;width:calc(100% - 28px);margin:0 14px;padding:18px;border-radius:16px;font-size:20px;font-weight:900;cursor:pointer}
+.flex{display:flex;gap:10px;margin:14px}
+.flex button{flex:1;padding:14px;border-radius:12px;background:#2b1a0e;color:#fde68a;border:1px solid #f5a623;font-weight:900;cursor:pointer}
+.footer{text-align:center;color:#fff;padding:6px 14px 20px;letter-spacing:2px;font-weight:900}
 </style>
 </head>
 <body>
-<header>
-<h1>J&D BILTONG</h1>
-<p>Premium Biltong • Cape Town • Made Fresh</p>
-</header>
-<div class="hero">
-<h2>Real Biltong. Real Flavour.</h2>
-<p>Slow dried, properly seasoned. Order on WhatsApp, we deliver in Cape Town.</p>
+<div class="wrap">
+  <div class="header">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <div style="font-size:52px">🦌</div>
+      <h1>J&D<span>Biltong</span></h1>
+      <div style="font-size:28px">🇿🇦</div>
+    </div>
+    <p>Good Food. Great Taste.</p>
+  </div>
+  <div class="order-title">ORDER FORM</div>
+  <div class="card">
+    <div class="card-head"><span>Product</span><span>Price</span><span>Quantity</span><span>Total</span></div>
+    <div id="products"></div>
+    <div class="total-bar"><span>Total Amount:</span><span id="grandTotal">R0</span></div>
+  </div>
+  <div class="details">
+    <span class="pill">Customer Details</span><br>
+    <span class="green">✓ COLLECTION ONLY</span>
+    <label>Name & Surname *</label>
+    <input id="custName" placeholder="Enter your name & surname">
+    <label>WhatsApp Number</label>
+    <input id="custPhone" placeholder="e.g. 076 430 1026">
+    <div class="note">📦 Collection Only — Order ahead and collect at your convenience.</div>
+  </div>
+  <div class="cta">Place your order today!</div>
+  <button class="wa" onclick="sendOrder()">🟢 Send Order via WhatsApp</button>
+  <button class="emailBtn" onclick="sendEmail()">📧 Send Order via Email</button>
+  <div class="flex">
+    <button onclick="copyOrder()">Copy Order Text</button>
+    <button onclick="clearForm()">Clear Form</button>
+  </div>
+  <div class="footer">J&D BILTONG | LOCAL | FRESH | DELICIOUS</div>
 </div>
-<div class="products">
-<div class="card"><h3>Original Biltong</h3><p>Classic, salty & meaty</p><div class="price">R85 / 100g</div><a class="btn" href="https://wa.me/27600000000?text=Hi%20J%26D!%20I%20want%20Original%20Biltong%20100g">Order on WhatsApp</a></div>
-<div class="card"><h3>Chilli Biltong</h3><p>With a proper kick</p><div class="price">R95 / 100g</div><a class="btn" href="https://wa.me/27600000000?text=Hi%20J%26D!%20I%20want%20Chilli%20Biltong%20100g">Order on WhatsApp</a></div>
-<div class="card"><h3>Peri-Peri Biltong</h3><p>Tangy & spicy</p><div class="price">R95 / 100g</div><a class="btn" href="https://wa.me/27600000000?text=Hi%20J%26D!%20I%20want%20Peri-Peri%20Biltong%20100g">Order on WhatsApp</a></div>
-<div class="card"><h3>Droëwors</h3><p>Dry wors, perfect snack</p><div class="price">R90 / 100g</div><a class="btn" href="https://wa.me/27600000000?text=Hi%20J%26D!%20I%20want%20Droewors%20100g">Order on WhatsApp</a></div>
-</div>
-<div class="order">
-<h2 style="margin:0">Order Now</h2>
-<p style="margin:8px 0">Fastest way is WhatsApp. Tell us what you want and where in Cape Town.</p>
-<a href="https://wa.me/27600000000?text=Hi%20J%26D%20Biltong!%20I%20want%20to%20order">Chat on WhatsApp</a>
-<p style="font-size:13px;color:#bbb;margin-top:12px">Cape Town • Collection & Delivery Available</p>
-</div>
-<footer>J&D Biltong © 2026 • Cape Town, South Africa</footer>
+<script>
+const OWNER_WHATSAPP = "27764301026";
+const OWNER_EMAIL = "Rhederjohan@gmail.com";
+const items = [
+  {name:"Plain Biltong (80g)", price:45, stock:true},
+  {name:"Chilli Biltong (80g)", price:45, stock:true},
+  {name:"Droëwors (80g)", price:45, stock:true},
+  {name:"Bacon Biltong (80g)", price:45, stock:false},
+  {name:"Chilli Sticks (80g)", price:45, stock:true},
+  {name:"Eggs (Tray of 30)", price:65, stock:true},
+  {name:"Honey Glazed Bacon Biltong (80g)", price:45, stock:false},
+];
+let qty = items.map(()=>0);
+const el = document.getElementById('products');
+function render(){
+  el.innerHTML = items.map((it,i)=>`
+    <div class="row ${it.stock?'':'disabled'}">
+      <div><b>${it.name.split(' (')[0]}</b><br><small>(${it.name.split('(')[1]}</small>${!it.stock?'<br><span class="out">TEMPORARY OUT OF STOCK</span>':''}</div>
+      <div><b>R${it.price}</b></div>
+      <div class="qty"><button onclick="changeQty(${i},-1)">−</button><span>${qty[i]}</span><button onclick="changeQty(${i},1)">+</button></div>
+      <div class="total">R${qty[i]*it.price}</div>
+    </div>`).join('');
+  let total = qty.reduce((s,q,i)=>s+q*items[i].price,0);
+  document.getElementById('grandTotal').innerText = 'R'+total;
+}
+function changeQty(i,d){ if(!items[i].stock) return; qty[i]=Math.max(0,qty[i]+d); render(); }
+function getText(){
+  let name=document.getElementById('custName').value.trim();
+  let phone=document.getElementById('custPhone').value.trim();
+  let lines=["NEW ORDER - J&D BILTONG","",`Name: ${name||'-'}`,`WhatsApp: ${phone||'-'}`,"","Order:"];
+  let total=0, has=false;
+  items.forEach((it,i)=>{ if(qty[i]>0){ has=true; let t=qty[i]*it.price; total+=t; lines.push(`- ${it.name} x ${qty[i]} = R${t}`);} });
+  if(!has) lines.push("(No items selected)");
+  lines.push("",`TOTAL: R${total}`,"Collection Only");
+  return lines.join("\n");
+}
+function validate(){
+  if(!document.getElementById('custName').value.trim()){ alert('Please enter your Name & Surname'); return false; }
+  if(qty.reduce((a,b)=>a+b,0)===0){ alert('Please select at least 1 item'); return false; }
+  return true;
+}
+function sendOrder(){
+  if(!validate()) return;
+  let waText = getText().replaceAll("NEW ORDER","*NEW ORDER*").replaceAll("TOTAL:","*TOTAL:*");
+  window.open(`https://wa.me/${OWNER_WHATSAPP}?text=${encodeURIComponent(waText)}`,'_blank');
+}
+function sendEmail(){
+  if(!validate()) return;
+  let subject = encodeURIComponent("New Order - J&D Biltong - " + document.getElementById('custName').value);
+  let body = encodeURIComponent(getText());
+  window.location.href = `mailto:${OWNER_EMAIL}?subject=${subject}&body=${body}`;
+}
+function copyOrder(){ navigator.clipboard.writeText(getText()).then(()=>alert('Order copied!')); }
+function clearForm(){ qty=items.map(()=>0); document.getElementById('custName').value=''; document.getElementById('custPhone').value=''; render(); }
+render();
+</script>
 </body>
 </html>
